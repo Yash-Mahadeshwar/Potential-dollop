@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreya ❤️ A Question for You</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hearts-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.3);
+            animation: float-up 10s infinite;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .bear-container {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        h1 {
+            color: #ff6b9d;
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .from {
+            color: #764ba2;
+            font-size: 18px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .question {
+            font-size: 28px;
+            color: #333;
+            margin: 30px 0;
+            font-weight: 600;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            position: relative;
+            min-height: 60px;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+            color: white;
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        .no-btn {
+            background: linear-gradient(135deg, #c4c4c4 0%, #d4d4d4 100%);
+            color: #666;
+            position: absolute;
+        }
+
+        .celebration {
+            display: none;
+            animation: celebrationPop 0.6s ease-out;
+        }
+
+        @keyframes celebrationPop {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .celebration h2 {
+            color: #ff6b9d;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .celebration-emoji {
+            font-size: 100px;
+            margin: 20px 0;
+            animation: rotate 1s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+            0%, 100% {
+                transform: rotate(-10deg);
+            }
+            50% {
+                transform: rotate(10deg);
+            }
+        }
+
+        .message {
+            color: #764ba2;
+            font-size: 20px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 30px;
+            animation: sparkleFloat 2s ease-out forwards;
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                transform: translateY(0) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-background" id="heartsBackground"></div>
+    <div class="sparkles" id="sparkles"></div>
+
+    <div class="container">
+        <div class="bear-container">🧸💝</div>
+        <h1>Hey Shreya!</h1>
+        <p class="from">From: Yash 💌</p>
+
+        <div id="questionSection">
+            <p class="question">Will you be my Valentine? 💕</p>
+            <div class="buttons">
+                <button class="yes-btn" onclick="yesClicked()">Yes! 💖</button>
+                <button class="no-btn" id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+            </div>
+        </div>
+
+        <div class="celebration" id="celebration">
+            <div class="celebration-emoji">🎉💕🎊</div>
+            <h2>Yayyy! 🥳</h2>
+            <p class="message">
+                I'm so happy! ❤️<br><br>
+                Can't wait to spend this Valentine's Day with you, Shreya!<br><br>
+                You make every day special! 💖<br><br>
+                Love, Yash 😊
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts in background
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            document.getElementById('heartsBackground').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+        // Create hearts periodically
+        setInterval(createHeart, 300);
+        for(let i = 0; i < 10; i++) {
+            createHeart();
+        }
+
+        // Move the No button away when hovering
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            const container = noBtn.parentElement;
+            const containerRect = container.getBoundingClientRect();
+
+            const maxX = 200;
+            const maxY = 100;
+
+            const randomX = (Math.random() - 0.5) * maxX;
+            const randomY = (Math.random() - 0.5) * maxY;
+
+            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+
+            // Make the button smaller each time
+            const currentSize = parseFloat(window.getComputedStyle(noBtn).fontSize) || 18;
+            if(currentSize > 10) {
+                noBtn.style.fontSize = (currentSize - 2) + 'px';
+            }
+        }
+
+        // Create sparkles effect
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.innerHTML = '✨';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            document.getElementById('sparkles').appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        // Handle Yes button click
+        function yesClicked() {
+            const questionSection = document.getElementById('questionSection');
+            const celebration = document.getElementById('celebration');
+
+            questionSection.style.display = 'none';
+            celebration.style.display = 'block';
+
+            // Create lots of sparkles
+            for(let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight;
+                    createSparkle(x, y);
+                }, i * 100);
+            }
+
+            // Change background to more romantic gradient
+            document.body.style.background = 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)';
+        }
+    </script>
+</body>
+</html>
