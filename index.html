@@ -117,6 +117,7 @@
             display: flex;
             gap: 20px;
             justify-content: center;
+            align-items: center;
             margin-top: 40px;
             position: relative;
             min-height: 60px;
@@ -136,6 +137,8 @@
         .yes-btn {
             background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
             color: white;
+            position: relative;
+            z-index: 2;
         }
 
         .yes-btn:hover {
@@ -147,6 +150,7 @@
             background: linear-gradient(135deg, #c4c4c4 0%, #d4d4d4 100%);
             color: #666;
             position: absolute;
+            z-index: 1;
         }
 
         .celebration {
@@ -196,6 +200,46 @@
             margin-top: 20px;
         }
 
+        .date-invite {
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe9f0 100%);
+            border: 3px solid #ff6b9d;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.2);
+        }
+
+        .date-invite h3 {
+            color: #ff6b9d;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .date-details {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .detail-icon {
+            font-size: 24px;
+        }
+
+        .detail-text {
+            font-weight: 600;
+        }
+
         .sparkles {
             position: absolute;
             width: 100%;
@@ -242,11 +286,35 @@
             <div class="celebration-emoji">🎉💕🎊</div>
             <h2>Yayyy! 🥳</h2>
             <p class="message">
-                I'm so happy! ❤️<br><br>
-                Can't wait to spend this Valentine's Day with you, Shreya!<br><br>
-                You make every day special! 💖<br><br>
-                Love, Yash 😊
+                I'm so happy! ❤️<br>
+                You make me the happiest person! 💖
             </p>
+
+            <div class="date-invite">
+                <h3>You're Invited! ✨</h3>
+                <div class="date-details">
+                    <div class="detail-row">
+                        <span class="detail-icon">📅</span>
+                        <span class="detail-text">Valentine's Day Date Night</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-icon">🕘</span>
+                        <span class="detail-text">9:00 PM Pacific Time (Vancouver)</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-icon">⏰</span>
+                        <span class="detail-text">Duration: 1 Hour (or more! 😊)</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-icon">💑</span>
+                        <span class="detail-text">Just You & Me</span>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; color: #ff6b9d; font-size: 18px; font-style: italic;">
+                    Can't wait to spend this special time with you! 💕<br>
+                    <span style="font-size: 16px; color: #764ba2;">Love, Yash ❤️</span>
+                </p>
+            </div>
         </div>
     </div>
 
